@@ -1,5 +1,2 @@
-This game is called 'Hang man' in this game you have 3 sec to guess the right letter other wise you lose one of your chances.
-In the beginig the game will choose a random word and show you the number of letters that you must guess.
-You will have one more chance (e.g. if the word is 'car' then you) will have 4 chances to guess.
-If you guess correctly then it's ok otherwise you will lose one of your chances.
-If your chances are = 0 then you lose.
+This game is called 'MASTERMIND' in this game the system will choose a 4 digit number randomly then you must guess the number by entering only 4 digit number not any other thing. If you can guess correctly in the first try which is so rare then you would be the master mind other wise you just win.
+If you guess some of the numbers then, the system will show you a message that how many of your numbers where correct and it will show you the number to make it easier for you.
