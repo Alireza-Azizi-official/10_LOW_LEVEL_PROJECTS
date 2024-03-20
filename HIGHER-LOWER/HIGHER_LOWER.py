@@ -1,5 +1,4 @@
 import random
-from artt import logo
 from artt import vs
 import instaloader
 import time
@@ -28,7 +27,7 @@ for user in user_list:
 point_P=0
 point_N=0
 
-while point_P or point_N < 3 :
+while point_P<3 and point_N < 3 :
     
     rand_users=random.sample(list(data_dict.keys()),k=2)
 
@@ -40,10 +39,11 @@ while point_P or point_N < 3 :
             max_followers_user =user
             max_followers = data_dict[user]
             
+    print("__________________________________________")        
     print("\n"+rand_users[0])
     print(vs)
     print(rand_users[1]+"\n")        
-    
+        
     player=input("enter your guess:")
 
     if player not in user_list:
@@ -82,9 +82,14 @@ while point_P or point_N < 3 :
             print(f"the user with the most followers is <<{max_followers_user.upper()}>> with <<{max_followers}>> followers.")
             break
             
-        
-    time.sleep(2)
-    print("\n"+rand_users[0])
-    print(vs)
-    print(rand_users[1]+"\n")
-    continue
+        # print("__________________________________________")
+        # time.sleep(2)
+        # print("\n"+rand_users[0])
+        # print(vs)
+        # print(rand_users[1]+"\n")
+        # continue
+    
+    restart=input("DO YOU WANT TO REPLAY?(Y/N)").lower()
+    if restart !="y":
+        break
+
