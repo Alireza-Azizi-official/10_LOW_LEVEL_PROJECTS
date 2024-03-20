@@ -2,6 +2,7 @@ import random
 from artt import vs
 import instaloader
 import time
+import clear
 
 L = instaloader.Instaloader()
 user_list = ['nasa', 'cristiano', 'leomessi', 'ufc', 'mmafighting', 'lovethenature95']
@@ -19,6 +20,8 @@ while playing:
     point_N = 0
     chances = 3
     while point_P < 3 and point_N < 3 and chances > 0:
+        time.sleep(3)
+        clear.clear()
         
         rand_users = random.sample(list(data_dict.keys()), k=2)
 
@@ -42,6 +45,7 @@ while playing:
             print("you must enter the profile name.")
             print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
             
+            
         else:
             
             if player == max_followers_user:
@@ -54,6 +58,7 @@ while playing:
                 print("you have",point_P,"points.")
                 chances -= 1
                 print("!! you have:",chances-1, "more chances.")
+                
 
 
                 
@@ -66,6 +71,7 @@ while playing:
                 point_N+=1
                 chances -= 1
                 print("!! you have:",chances-1, "more chances.")
+                
                 
 
         if point_P == 3:
@@ -83,6 +89,7 @@ while playing:
 
     restart = input("Do you want to restart the game? (Y/N) ").lower()
     if restart != "y":
+        clear.clear()
         print("Thanks for playing!")
         break
         
