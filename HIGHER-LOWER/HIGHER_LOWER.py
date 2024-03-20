@@ -4,81 +4,28 @@ from artt import vs
 import instaloader
 
 
+L = instaloader.Instaloader()
+user_list=['nasa','cristiano','leomessi','ufc','mmafighting','lovethenature95']
+data_dict={
+    "nasa": 0,
+    "cristiano": 0,
+    "leomessi": 0,
+    "ufc": 0,
+    "mmafighting": 0,
+    "lovethenature95": 0,
+}
 
-def data():
-    L = instaloader.Instaloader()
-    user_list=['nasa','cristiano','leomessi','ufc','mmafighting','lovethenature95']
-    followers=[]
-    for user in user_list:
-        profile = instaloader.Profile.from_username(L.context,user)
-        followers.append(profile.followers)
-    return followers
+for user in user_list:
+    profile = instaloader.Profile.from_username(L.context, user)
+    data_dict[user] = profile.followers
 
-def data_func():
-    return data()
+rand_users=random.sample(list(data_dict.keys()),k=2)
 
-def assign():
-    return random.choice(data_func())
+max_followers_user=""
+max_followers=0
 
-
-def logic(user1, user2, guess, max):
-
-    final_user = {user1, user2}
-
-    for _ in final_user:
-        if user1 > user2:
-            max += str(user1)
-        else:
-            max += str(user2)
-
-    if max == guess:
-        return True, max
-    else:
-        return False, max
-
-def play():
-    play = True
-
-    while play:
-        point = 0
-        game_running = True
-
-        while game_running:
-            print(logo)
-            a = assign()
-            b = assign()
-
-            if point > 0:
-                a = b
-                b = assign()
-
-                if a == b:
-                    b = assign()
-
-            print(a)
-            print(vs)
-            print(b)
-
-            print("__________________________")
-            print(f"YOU HAVE {point} POINTS.")
-            print("__________________________")
-
-            guess = input("enter your guess:")
-
-            if logic(a, b, guess, max):
-                point += 1
-                max = max_guess
-            else:
-                game_running = False
-
-        restart = input("I DON'T SUGGEST BUT DO YOU WANT TO RESTART?(Y/N)").lower()
-
-        if restart == 'y':
-            max_guess = ""
-            guess = input("enter your guess:")
-        elif restart =='n':
-            print("so what are you doing here?")
-        else:
-            print("if you can't even enter one of two letters then you'd better not to play.")
-
-play()
+for user in rand_users:
+    if data_dict[user] > max_followers:
+        max_followers_user =user
+        max_followers = data_dict[user]
+print(f"the user with the most followers is <<{max_followers_user.upper()}>> with <<{max_followers}>> followers.")
