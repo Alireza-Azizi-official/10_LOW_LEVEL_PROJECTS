@@ -21,26 +21,29 @@ for user in user_list:
     profile = instaloader.Profile.from_username(L.context, user)
     data_dict[user] = profile.followers
 
-rand_users=random.sample(list(data_dict.keys()),k=2)
 
-max_followers_user=""
-max_followers=0
-
-for user in rand_users:
-    if data_dict[user] > max_followers:
-        max_followers_user =user
-        max_followers = data_dict[user]
 
 #------------------------------------------------------------------------------------
 #second part
-print("\n"+rand_users[0])
-print(vs)
-print(rand_users[1]+"\n")
-
 point_P=0
 point_N=0
 
-while point_P + point_N < 3 :
+while point_P or point_N < 3 :
+    
+    rand_users=random.sample(list(data_dict.keys()),k=2)
+
+    max_followers_user=""
+    max_followers=0
+
+    for user in rand_users:
+        if data_dict[user] > max_followers:
+            max_followers_user =user
+            max_followers = data_dict[user]
+            
+    print("\n"+rand_users[0])
+    print(vs)
+    print(rand_users[1]+"\n")        
+    
     player=input("enter your guess:")
 
     if player not in user_list:
@@ -67,20 +70,19 @@ while point_P + point_N < 3 :
             point_N+=1
             
             
-        if point_P== 3 and point_N==0:
+        if point_P== 3 and point_N<3:
             time.sleep(1)
             print("YOU ARE GOD OF THIS GAME.")
             print(f"the user with the most followers is <<{max_followers_user.upper()}>> with <<{max_followers}>> followers.")
             break
-        elif point_P > point_N:
-            time.sleep(1)
-            print("you win")
+        elif point_N==3 and point_P<3:
+            print("YOU LOSE THE GAME.")
+            print(f"the user with the most followers is <<{max_followers_user.upper()}>> with <<{max_followers}>> followers.")
             break
-        else:
-            time.sleep(1)
-            print("you lose")
-            break
-time.sleep(2)
-print("\n"+rand_users[0])
-print(vs)
-print(rand_users[1]+"\n")
+            
+        
+    time.sleep(2)
+    print("\n"+rand_users[0])
+    print(vs)
+    print(rand_users[1]+"\n")
+    continue
