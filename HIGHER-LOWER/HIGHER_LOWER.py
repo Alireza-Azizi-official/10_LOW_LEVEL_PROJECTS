@@ -67,6 +67,8 @@ while point_P or point_N < 3 :
             print("______________")
             print("OOPS.")
             print("______________")
+            print(f"the user with the most followers is <<{max_followers_user.upper()}>> with <<{max_followers}>> followers.")
+
             point_N+=1
             
             
