@@ -52,8 +52,9 @@ while playing:
                 print(f"the user with the most followers is <<{max_followers_user.upper()}>> with <<{max_followers}>> followers.")
                 point_P+=1
                 print("you have",point_P,"points.")
-                print("!! you have:",chances-1, "more chances.")
                 chances -= 1
+                print("!! you have:",chances-1, "more chances.")
+
 
                 
             else:
